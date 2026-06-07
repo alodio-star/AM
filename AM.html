@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Disculpas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fef6e4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .carta {
+      width: 90%;
+      max-width: 350px;
+      height: 220px;
+      background-image: url('https://w7.pngwing.com/pngs/823/330/png-transparent-letter-envelope-scalable-graphics-icon-envelope-love-miscellaneous-heart.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+      perspective: 1000px;
+    }
+
+    .carta.abierta {
+      transform: rotateY(180deg);
+      background-image: none;
+      background-color: white;
+      padding: 20px;
+      height: auto;
+      cursor: default;
+    }
+
+    .mensaje {
+      display: none;
+      color: #333;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .carta.abierta .mensaje {
+      display: block;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+
+    .boton-cerrar {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .carta.abierta .boton-cerrar {
+      display: block;
+    }
+
+    @media screen and (max-width: 480px) {
+      .mensaje {
+        font-size: 16px;
+      }
+
+      .boton-cerrar {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="carta" id="carta">
+  <button class="boton-cerrar" id="cerrar">Cerrar</button>
+  <div class="mensaje">
+    <p>
+      Amelia te pido perdon por lo que paso se que estuvo mal hacerte esperar tanto tiempo y hacerte pasar un momento desagradable.<br><br>
+      Tu eres una persona muy importante para mi y me siento mal al saber que pasaste un mal rato por mi culpa lo unico que ahora puedo hacer es pedir perdon y gracias por la paciencia que me tienes, por el cariño que me muestras, te quiero mucho Amelia <3 .
+    </p>
+  </div>
+</div>
+
+<script>
+  const carta = document.getElementById('carta');
+  const cerrarBtn = document.getElementById('cerrar');
+
+  carta.addEventListener('click', () => {
+    if (!carta.classList.contains('abierta')) {
+      carta.classList.add('abierta');
+    }
+  });
+
+  cerrarBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Evita que se vuelva a abrir al hacer click en el botón
+    carta.classList.remove('abierta');
+  });
+</script>
+
+</body>
+</html>
